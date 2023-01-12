@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <title>Edit Recipe!</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="d-flex justify-content-between">
+      <h1>Edit Recipe!</h1>
+      <a href="/dashboard">Back to Recipes</a>
+      <a href="/logout">Log Out</a>
+    </div>
+    {% for message in get_flashed_messages() %}
+    <p class="text-danger">{{ message }}</p>
+    {% endfor %}
+    <form action="/recipes/{{one_recipe.id}}/update" method="post">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="{{one_recipe.name}}">
+
+      <label for="description">Description</label>
+      <input type="text" name="description" id="description" value="{{one_recipe.description}}">
+
+      <label for="instructions">Instructions</label>
+      <input type="text" name="instructions" id="instructions" value="{{one_recipe.instructions}}">
+
+      <label for="date_made">Date Cooked</label>
+      <input type="date" name="date_made" id="date_made" value="{{one_recipe.date_made}}">
+
+        <p>Under 30 min.</p>
+
+      <label for="under">True</label>
+      <input type="radio" name="under" id="under" value="1">
+
+
+      <label for="under">False</label>
+      <input type="radio" name="under" id="under" value="0">
+
+      <button>Submit</button>
+
+    </form>
+  </div>
+</body>
+</html>
